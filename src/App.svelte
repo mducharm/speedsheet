@@ -1,7 +1,20 @@
 <script>
   import EditForm from "./components/EditForm.svelte";
-import Form from "./components/Form.svelte";
+  import Form from "./components/Form.svelte";
   import Table from "./components/Table.svelte";
+
+  function exportCsv() {
+
+	const rows = [
+    ["name1", "city1", "some other info"],
+    ["name2", "city2", "more info"]
+];
+
+	let csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
+
+	var encodedUri = encodeURI(csvContent);
+	window.open(encodedUri);
+  }
 </script>
 
 <!--Nav-->
@@ -36,14 +49,15 @@ import Form from "./components/Form.svelte";
         <li class="mr-3">
 			<button 
 				class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+				on:click={exportCsv}
 			>Export</button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<!--Container-->
-<div class="container shadow-lg mx-auto bg-white mt-24 md:mt-16 h-screen">
+
+<div>
   <Form />
   <Table />
 </div>
