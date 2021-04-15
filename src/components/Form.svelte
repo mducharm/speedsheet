@@ -4,23 +4,28 @@
 </script>
 
 <div class="flex items-center h-screen w-full bg-teal-lighter">
+  <div class="w-full bg-white rounded shadow-lg p-8 m-4 md:mx-auto md:w-1/2">
+    <form
+      class="mb-4 md:flex md:flex-wrap md:justify-between"
+      action="/"
+      method="post"
+    >
 
-    <!-- <EditForm /> -->
-    
-    <form class="mb-6 px-9">
-        {#each $fields as field}
-        <div class="flex flex-col mb-4">
-            <label
-            class="mb-2 font-bold text-lg text-grey-darkest"
+      {#each $fields as field}
+        <div class="flex flex-col mb-4 md:w-full">
+          <label
+            class="mb-2 uppercase font-bold text-lg text-grey-darkest"
             for={field.name}>{field.name}</label
-            >
-            <input type={field.type} class="border py-2 px-3 text-grey-darkest" />
+          >
+          <input type={field.type} class="border py-2 px-3 text-grey-darkest" />
         </div>
-        {/each}
-        <button type="submit"
-            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-        >Submit</button>
+      {/each}
+      <button
+        class="block bg-teal hover:bg-teal-dark text-black mx-auto p-4 rounded"
+        type="submit">Submit</button
+      >
     </form>
+  </div>
 </div>
 
 <style global lang="postcss">
